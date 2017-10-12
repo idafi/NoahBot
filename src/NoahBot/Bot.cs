@@ -21,7 +21,7 @@ namespace NoahBot
 		{
 			Log.Note("connecting to Discord...");
 			await client.ConnectAsync();
-			Log.Note("connected\n\nPress Enter to disconnect the bot\n");
+			Log.Note("connected");
 		}
 		
 		public async Task Disconnect()
