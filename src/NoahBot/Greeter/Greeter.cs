@@ -14,13 +14,9 @@ namespace NoahBot
 			"Oh hai!"
 		};
 		
-		readonly Random rand;
-		
 		public Greeter(DiscordClient client)
 		{
 			Assert.Ref(client);
-			
-			rand = new Random();
 			
 			client.GuildAvailable += Hello;
 			client.GuildMemberAdded += Welcome;
