@@ -11,7 +11,7 @@ ECHO.
 %NOAHBOT_CSC% /nologo ^
 	/r:%NOAHBOT_JSONNET_DLL% ^
 	/r:%NOAHBOT_DSHARP_DLL% ^
-	/t:library /out:%NOAHBOT_OUT%/NoahBot.dll ^
+	/t:exe /out:%NOAHBOT_OUT%/NoahBot.exe ^
 	/recurse:%NOAHBOT_HOME%/src/NoahBot/*.cs
 
 GOTO :EOF
