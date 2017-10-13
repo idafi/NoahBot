@@ -8,6 +8,7 @@ namespace NoahBot
 	{
 		readonly DiscordClient client;
 		readonly CommandDispatcher commands;
+		
 		readonly Greeter greeter;
 		
 		public Bot(DiscordConfiguration config)
@@ -17,6 +18,8 @@ namespace NoahBot
 			client = new DiscordClient(config);
 			commands = new CommandDispatcher();
 			greeter = new Greeter(client);
+			
+			commands.AddCommands(greeter);
 		}
 		
 		public async Task Connect()
@@ -31,6 +34,7 @@ namespace NoahBot
 		public async Task Disconnect()
 		{
 			UnregisterEvents();
+			
 			Log.Note("disconnecting from Discord...");
 			await client.DisconnectAsync();
 			Log.Note("disconnected");

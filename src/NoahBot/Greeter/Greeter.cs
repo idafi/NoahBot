@@ -6,7 +6,7 @@ using DSharpPlus.EventArgs;
 
 namespace NoahBot
 {
-	public class Greeter
+	public class Greeter : IBotCommand
 	{
 		static readonly string[] greetings =
 		{
@@ -14,12 +14,28 @@ namespace NoahBot
 			"Oh hai!"
 		};
 		
+		public string Name
+		{
+			get { return "Say Hi"; }
+		}
+		
+		public string Pattern
+		{
+			get { return @"^say hi(\.?|\!*)$"; }
+		}
+		
 		public Greeter(DiscordClient client)
 		{
 			Assert.Ref(client);
 			
 			client.GuildAvailable += Hello;
 			client.GuildMemberAdded += Welcome;
+		}
+		
+		public async Task Execute(CommandData data)
+		{
+			string greeting = RandomHelper.ArraySelect<string>(greetings);
+			await data.Message.RespondAsync(greeting, false, null);
 		}
 		
 		async Task Hello(GuildCreateEventArgs e)
