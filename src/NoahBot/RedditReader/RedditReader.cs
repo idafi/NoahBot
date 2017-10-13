@@ -87,13 +87,13 @@ namespace NoahBot
 						{ src = await reader.ReadToEndAsync(); }
 					}
 				}
-				catch(Exception e)
+				catch(WebException e)
 				{
 					Log.Error($"failed to retrieve page source: category '{option}' not found in r/{subreddit}\n{e}");
 					await message.RespondAsync($"There's no category in r/{subreddit} called '{option}'... lol");
 				}
 			}
-			catch(Exception e)
+			catch(WebException e)
 			{
 				Log.Error($"failed to retrieve page source: subreddit '{subreddit}' not found\n{e}");
 				await message.RespondAsync($"Uh, 'r/{subreddit}' doesn't exist...");
