@@ -21,6 +21,8 @@ namespace NoahBot
 		
 		public async Task Connect()
 		{
+			RegisterEvents();
+			
 			Log.Note("connecting to Discord...");
 			await client.ConnectAsync();
 			Log.Note("connected");
@@ -28,6 +30,7 @@ namespace NoahBot
 		
 		public async Task Disconnect()
 		{
+			UnregisterEvents();
 			Log.Note("disconnecting from Discord...");
 			await client.DisconnectAsync();
 			Log.Note("disconnected");
