@@ -51,6 +51,8 @@ namespace NoahBot
 								break;
 						}
 					}
+					
+					break;
 				}
 			}
 		}
