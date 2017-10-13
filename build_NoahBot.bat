@@ -1,6 +1,6 @@
 @ECHO off
 
-IF NOT DEFINED CPU (GOTO envmissing)
+IF NOT DEFINED NOAHBOT_OUT (GOTO envmissing)
 
 ECHO.
 ECHO ----------------------
@@ -11,7 +11,8 @@ ECHO.
 %NOAHBOT_CSC% /nologo ^
 	/r:%NOAHBOT_JSONNET_DLL% ^
 	/r:%NOAHBOT_DSHARP_DLL% ^
-	/t:exe /out:%NOAHBOT_OUT%/NoahBot.exe ^
+	/platform:anycpu /t:exe ^
+	/out:%NOAHBOT_OUT%/NoahBot.exe ^
 	/recurse:%NOAHBOT_HOME%/src/NoahBot/*.cs
 
 GOTO :EOF

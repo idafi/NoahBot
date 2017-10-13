@@ -1,22 +1,13 @@
 @ECHO off
 
 REM - don't waste time if already set up
-IF DEFINED CPU (
-	IF "%1" == "" (GOTO skip)
-	IF "%CPU%" == "%1" (GOTO skip)
-)
+IF DEFINED NOAHBOT_OUT (GOTO skip)
 
 ECHO.
 ECHO ----------------------
 ECHO setting up build environment
 ECHO ----------------------
 ECHO.
-
-REM - get target cpu
-IF "%1" == "" (SET CPU=x64) ELSE (SET CPU=%1)
-IF NOT %CPU% == x64 IF NOT %CPU% == x86 GOTO badcpu
-
-ECHO targeting win %CPU%
 
 REM - get user environment
 CALL util\setup_env.bat
@@ -26,8 +17,9 @@ REM - user environment check
 IF NOT DEFINED NOAHBOT_HOME (GOTO envmissing)
 IF NOT DEFINED NOAHBOT_DOTNET (GOTO envmissing)
 
-REM - set output dir
-SET NOAHBOT_OUT=%NOAHBOT_HOME%\bin\%CPU%
+REM - set, ensure output dir
+SET NOAHBOT_OUT=%NOAHBOT_HOME%\bin
+IF NOT EXIST %NOAHBOT_OUT% (MKDIR %NOAHBOT_OUT%)
 
 REM - set compiler
 SET NOAHBOT_CSC=%NOAHBOT_DOTNET%\csc.exe
@@ -50,14 +42,10 @@ ECHO NOAHBOT_HOME is %NOAHBOT_HOME%
 ECHO NOAHBOT_DOTNET is %NOAHBOT_DOTNET%
 GOTO fail
 
-:badcpu
-ECHO invalid cpu target specified ('%1'); expected x64 or x86
-GOTO fail
-
 :fail
 EXIT /b 1
 
 :skip
 ECHO.
-ECHO already targeting win %CPU% - skipping environment setup
+ECHO environment already seems prepared - skipping setup
 EXIT /b 0
