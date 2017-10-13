@@ -54,7 +54,7 @@ namespace NoahBot
 		static void PrintLogo()
 		{
 			string proverb = RandomHelper.ArraySelect<string>(proverbs);
-			Log.Note($"NoahBot v0.0.1\n\"{proverb}\"\n");
+			Console.WriteLine($"NoahBot v0.0.1\n\"{proverb}\"\n");
 		}
 		
 		static DiscordConfiguration LoadConfiguration()
@@ -69,7 +69,7 @@ namespace NoahBot
 		{
 			bot.Connect().Wait();
 			
-			Log.Note("\npress Enter at any time to disconnect\n");
+			Console.WriteLine("\npress Enter at any time to disconnect\n");
 			Console.ReadLine();
 			
 			bot.Disconnect().Wait();
