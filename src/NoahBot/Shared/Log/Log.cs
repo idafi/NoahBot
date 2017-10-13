@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace NoahBot
@@ -20,6 +21,10 @@ namespace NoahBot
 		public static void Write(LogLevel level, string msg)
 		{
 			Assert.Ref(msg);
+			
+			DateTime time = DateTime.Now;
+			string timestamp = time.ToString("HH:mm:ss.fff: ");
+			msg = timestamp + msg;
 			
 			foreach(var pair in loggers)
 			{
