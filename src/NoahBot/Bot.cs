@@ -10,6 +10,7 @@ namespace NoahBot
 		readonly CommandDispatcher commands;
 		
 		readonly Greeter greeter;
+		readonly RedditReader redditReader;
 		
 		public Bot(DiscordConfiguration config)
 		{
@@ -17,9 +18,11 @@ namespace NoahBot
 			
 			client = new DiscordClient(config);
 			commands = new CommandDispatcher();
-			greeter = new Greeter(client);
 			
-			commands.AddCommands(greeter);
+			greeter = new Greeter(client);
+			redditReader = new RedditReader();
+			
+			commands.AddCommands(greeter, redditReader);
 		}
 		
 		public async Task Connect()
