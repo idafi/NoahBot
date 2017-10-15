@@ -9,6 +9,7 @@ ECHO ----------------------
 ECHO.
 
 %NOAHBOT_CSC% /nologo ^
+	/debug /d:DEBUG ^
 	/r:%NOAHBOT_JSONNET_DLL% ^
 	/r:%NOAHBOT_DSHARP_DLL% ^
 	/platform:anycpu /t:exe ^
