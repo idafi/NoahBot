@@ -25,13 +25,11 @@ REM - set compiler
 SET NOAHBOT_CSC=%NOAHBOT_DOTNET%\csc.exe
 
 REM - set up lib dependencies
-SET NOAHBOT_DSHARP=%NOAHBOT_HOME%\lib\DSharpPlus-3.2.2\lib\net45
-SET NOAHBOT_JSONNET=%NOAHBOT_HOME%\lib\Newtonsoft.Json.10.0.2\lib\net45
-SET NOAHBOT_NUNIT=%NOAHBOT_HOME%\lib\NUnit.Framework-3.8.1\lib\net-4.5
+SET NOAHBOT_DSHARP=%NOAHBOT_HOME%\lib\DSharpPlus.3.2.3\lib\net47
+SET NOAHBOT_JSONNET=%NOAHBOT_HOME%\lib\Newtonsoft.Json.10.0.3\lib\net45
 
 SET NOAHBOT_DSHARP_DLL=%NOAHBOT_DSHARP%\DSharpPlus.dll
 SET NOAHBOT_JSONNET_DLL=%NOAHBOT_JSONNET%\Newtonsoft.Json.dll
-SET NOAHBOT_NUNIT_DLL=%NOAHBOT_NUNIT%\nunitlite.dll
 
 ECHO done
 GOTO :EOF
