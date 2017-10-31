@@ -3,6 +3,7 @@ bin/
 doc/
 lib/
 obj/
+util/*.exe
 *.tlog/
 *.idb
 *.log
