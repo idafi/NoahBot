@@ -1,12 +1,11 @@
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using DSharpPlus;
 using Newtonsoft.Json;
 
 namespace NoahBot
 {
-	public static class NoahBot
+	internal static class NoahBot
 	{
 		static string[] proverbs;
 		
