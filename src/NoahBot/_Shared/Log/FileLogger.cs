@@ -3,10 +3,17 @@ using System.IO;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// An <see cref="ILogger"/> implementation that logs messages to an output file.
+	/// </summary>
 	public class FileLogger : IDisposable, ILogger
 	{
 		readonly StreamWriter writer;
 
+		/// <summary>
+		/// Creates a new <see cref="FileLogger"/>, opening an output file at the given path.
+		/// </summary>
+		/// <param name="filePath">The path at which to open the output file.</param>
 		public FileLogger(string filePath)
 		{
 			FileStream stream = null;
@@ -27,11 +34,15 @@ namespace NoahBot
 			}
 		}
 
+		/// <summary>
+		/// Closes the output file used by this <see cref="FileLogger"/>.
+		/// </summary>
 		public void Dispose()
 		{
 			writer?.Dispose();
 		}
 
+		/// <inheritdoc />
 		public void Write(LogLevel level, string msg)
 		{
 			if(writer != null)

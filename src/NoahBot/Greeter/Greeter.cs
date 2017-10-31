@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.Entities;
@@ -6,6 +5,9 @@ using DSharpPlus.EventArgs;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// Sends a randomly-selected greeting message when joining a Discord guild, or on command.
+	/// </summary>
 	public class Greeter : IBotCommand
 	{
 		static readonly string[] greetings =
@@ -14,16 +16,22 @@ namespace NoahBot
 			"Oh hai!"
 		};
 		
+		/// <inheritdoc />
 		public string Name
 		{
 			get { return "Say Hi"; }
 		}
 		
+		/// <inheritdoc />
 		public string Pattern
 		{
 			get { return @"^say hi(\.?|\!*)$"; }
 		}
 		
+		/// <summary>
+		/// Constructs and initializes a new <see cref="Greeter"/>.
+		/// </summary>
+		/// <param name="client">The client connection whose guild-join events will be used.</param>
 		public Greeter(DiscordClient client)
 		{
 			Assert.Ref(client);
@@ -32,6 +40,7 @@ namespace NoahBot
 			client.GuildMemberAdded += Welcome;
 		}
 		
+		/// <inheritdoc />
 		public async Task Execute(CommandData data)
 		{
 			string greeting = RandomHelper.ArraySelect<string>(greetings);

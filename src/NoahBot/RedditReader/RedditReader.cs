@@ -6,20 +6,28 @@ using DSharpPlus.Entities;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// Finds the topmost post of a given subreddit, and returns its content in a nicely-formatted Discord message.. 
+	/// <para>The pattern can accept a Reddit-standard modifier to the subreddit search, allowing users to find the top
+	/// "hot" post, the top "new" post, etc.</para>
+	/// </summary>
 	public class RedditReader : IBotCommand
 	{
 		const string redditPrefix = "https://www.reddit.com/r/";
 		
+		/// <inheritdoc />
 		public string Name
 		{
 			get { return "Reddit Reader"; }
 		}
 		
+		/// <inheritdoc />
 		public string Pattern
 		{
 			get { return @"^what's (\w*) ?on r/(\w+)\?*$"; }
 		}
 		
+		/// <inheritdoc />
 		public async Task Execute(CommandData data)
 		{
 			RedditLinkExtractor extractor = new RedditLinkExtractor();

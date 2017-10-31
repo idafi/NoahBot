@@ -2,8 +2,13 @@ using System;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// An <see cref="ILogger"/> implementation that logs messages to the program console.
+	/// <para>Messages will be color-coded based on severity.</para>
+	/// </summary>
 	public class ConsoleLogger : ILogger
 	{
+		/// <inheritdoc />
 		public void Write(LogLevel level, string msg)
 		{
 			Assert.Ref(msg);

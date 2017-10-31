@@ -39,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\..\bin\NoahBot.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,13 +51,16 @@
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\..\bin\NoahBot.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivitySelector\Activity.cs" />
     <Compile Include="ActivitySelector\ActivitySelector.cs" />
+    <Compile Include="ActivitySelector\ActivitySettings.cs" />
     <Compile Include="Bot.cs" />
     <Compile Include="Commands\CommandData.cs" />
     <Compile Include="Commands\CommandDispatcher.cs" />

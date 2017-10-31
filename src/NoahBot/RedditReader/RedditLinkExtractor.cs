@@ -3,8 +3,18 @@ using System.Text.RegularExpressions;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// Extracts links from a subreddit page's source text, and parses them into an array of <see cref="RedditLink"/>s.
+	/// <para>Currently, you're getting everything inside the source text. A means to cap the number of parsed links
+	/// is feasible, but pending.</para>
+	/// </summary>
 	public class RedditLinkExtractor
 	{
+		/// <summary>
+		/// Parse <see cref="RedditLink"/>s from the given subreddit page's source text. 
+		/// </summary>
+		/// <param name="pageSource">The source text to be parsed.</param>
+		/// <returns>An array of <see cref="RedditLink"/>s parsed from the source text.</returns>
 		public RedditLink[] ExtractLinks(string pageSource)
 		{
 			return ParseLinks(ExtractLinkSource(pageSource));

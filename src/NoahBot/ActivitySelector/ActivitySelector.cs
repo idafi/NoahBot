@@ -5,21 +5,32 @@ using Newtonsoft.Json;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// Selects a random <see cref="Activity"/> from a weighted list, and prints it to Discord.
+	/// <para>Activity weights are dynamically adjusted when a new <see cref="Activity"/> is selected.</para>
+	/// Recently-selected <see cref="Activity"/> entries are less likely to be re-selected than older ones.
+	/// </summary>
 	public class ActivitySelector : IBotCommand
 	{
 		readonly ActivitySettings settings;
 		readonly float[] weights;
 		
+		/// <inheritdoc />
 		public string Name
 		{
 			get { return "Say What to Do"; }
 		}
 		
+		/// <inheritdoc />
 		public string Pattern
 		{
 			get { return @"^(tell us what to do(\.?|\!*)|what should we do\?*)$"; }
 		}
 		
+		/// <summary>
+		/// Constructs and initializes a new <see cref="ActivitySelector"/>.
+		/// <para>Activities will be loaded from an "activities.json" file in the working directory.</para>
+		/// </summary>
 		public ActivitySelector()
 		{
 			string json = File.ReadAllText("activities.json");
@@ -32,6 +43,7 @@ namespace NoahBot
 			ValidateWeights();
 		}
 		
+		/// <inheritdoc />
 		public async Task Execute(CommandData data)
 		{
 			string act = SelectActivity();

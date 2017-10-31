@@ -4,6 +4,10 @@ using DSharpPlus.EventArgs;
 
 namespace NoahBot
 {
+	/// <summary>
+	/// Represents a Discord bot.
+	/// <para>All NoahBot systems are available to the bot.</para>
+	/// </summary>
 	public class Bot
 	{
 		readonly DiscordClient client;
@@ -13,6 +17,10 @@ namespace NoahBot
 		readonly RedditReader redditReader;
 		readonly ActivitySelector activitySelector;
 		
+		/// <summary>
+		/// Constructs and initializes a new <see cref="Bot"/>, using the given configuration settings.
+		/// </summary>
+		/// <param name="config">The configuration settings for the discord client.</param>
 		public Bot(DiscordConfiguration config)
 		{
 			Assert.Ref(config);
@@ -27,6 +35,9 @@ namespace NoahBot
 			commands.AddCommands(greeter, redditReader, activitySelector);
 		}
 		
+		/// <summary>
+		/// Connects the <see cref="Bot"/> to Discord.
+		/// </summary>
 		public async Task Connect()
 		{
 			RegisterEvents();
@@ -36,6 +47,9 @@ namespace NoahBot
 			Log.Note("connected");
 		}
 		
+		/// <summary>
+		/// Disconnects the <see cref="Bot"/> from Discord.
+		/// </summary>
 		public async Task Disconnect()
 		{
 			UnregisterEvents();
