@@ -1,47 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NoahBot
 {
-	class Activity
-	{
-		[JsonProperty]
-		public readonly string Name;
-		
-		[JsonProperty]
-		public readonly float Weight;
-
-		public Activity()
-		{
-			Name = "?";
-			Weight = 0;
-		}
-		
-		public Activity(string name)
-		{
-			Name = name;
-			Weight = 0;
-		}
-	};
-	
-	struct ActivitySettings
-	{
-		[JsonProperty]
-		public readonly float SelectionModifier;
-		
-		[JsonProperty]
-		public readonly Activity[] Activities;
-		
-		public ActivitySettings(float selectMod)
-		{
-			SelectionModifier = selectMod;
-			Activities = new Activity[0];
-		}
-	};
-	
 	public class ActivitySelector : IBotCommand
 	{
 		readonly ActivitySettings settings;
