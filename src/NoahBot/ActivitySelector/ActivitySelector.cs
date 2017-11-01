@@ -1,7 +1,5 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace NoahBot
 {
@@ -29,13 +27,12 @@ namespace NoahBot
 		
 		/// <summary>
 		/// Constructs and initializes a new <see cref="ActivitySelector"/>.
-		/// <para>Activities will be loaded from an "activities.json" file in the working directory.</para>
 		/// </summary>
-		public ActivitySelector()
+		/// <param name="settings">The settings to use.</param>
+		public ActivitySelector(ActivitySettings settings)
 		{
-			string json = File.ReadAllText("activities.json");
-			settings = JsonConvert.DeserializeObject<ActivitySettings>(json);
-			
+			this.settings = settings;
+
 			weights = new float[settings.Activities.Length];
 			for(int i = 0; i < weights.Length; i++)
 			{ weights[i] = settings.Activities[i].Weight; }

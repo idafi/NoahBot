@@ -67,6 +67,7 @@
     <Compile Include="Commands\IBotCommand.cs" />
     <Compile Include="Greeter\Greeter.cs" />
     <Compile Include="NoahBot.cs" />
+    <Compile Include="BotConfig.cs" />
     <Compile Include="RedditReader\RedditLink.cs" />
     <Compile Include="RedditReader\RedditLinkExtractor.cs" />
     <Compile Include="RedditReader\RedditLinkSyntax.cs" />

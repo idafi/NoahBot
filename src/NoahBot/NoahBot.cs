@@ -31,11 +31,11 @@ namespace NoahBot
 			Log.AddLogger(fLog, LogLevel.Warning);
 			
 			try
-			{
-				PrintLogo();
-				
-				DiscordConfiguration config = LoadConfiguration();
+			{	
+				BotConfig config = LoadConfig();
 				Bot bot = new Bot(config);
+
+				PrintLogo();
 				RunBot(bot);
 			}
 			catch(Exception e)
@@ -55,11 +55,11 @@ namespace NoahBot
 			Console.WriteLine($"NoahBot v0.0.1\n\"{proverb}\"\n");
 		}
 		
-		static DiscordConfiguration LoadConfiguration()
+		static BotConfig LoadConfig()
 		{
-			string json = File.ReadAllText("config.json");
-			DiscordConfiguration config = JsonConvert.DeserializeObject<DiscordConfiguration>(json);
-			
+			string configJson = File.ReadAllText("../data/config.json");
+			BotConfig config = JsonConvert.DeserializeObject<BotConfig>(configJson);
+
 			return config;
 		}
 		

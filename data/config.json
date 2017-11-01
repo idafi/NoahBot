@@ -1,0 +1,63 @@
+{
+	"DiscordConfig" :
+	{
+	  "Token": "whoops, can't show you this",
+	  "UseInternalLogHandler": false,
+	  "AutoReconnect": false
+	},
+
+	"Greetings" :
+	[
+		"Oh hai!",
+		"Hellooooooo!",
+		"Hey guys!"
+	],
+
+	"ActivityConfig" :
+	{
+		"SelectionModifier" : 0.15,
+		
+		"Activities" :
+		[
+			{
+				"Name" : "yell at noah all day",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "fail to convince people to enjoy starcraft",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "give up and just do heroes again",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "transparently wait to pop in until more people are in the channel",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "awkwardly sit around without making a decision",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "spend an hour blabbering about dark souls (but never actually play it)",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "playerunknown's badgame",
+				"Weight" : 0.125
+			},
+			
+			{
+				"Name" : "ignore each other and do your own thing",
+				"Weight" : 0.125
+			}
+		]
+	}
+}

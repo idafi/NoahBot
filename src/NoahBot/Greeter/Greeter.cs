@@ -10,12 +10,8 @@ namespace NoahBot
 	/// </summary>
 	public class Greeter : IBotCommand
 	{
-		static readonly string[] greetings =
-		{
-			"Helllooooo!",
-			"Oh hai!"
-		};
-		
+		readonly string[] greetings;
+
 		/// <inheritdoc />
 		public string Name
 		{
@@ -32,9 +28,13 @@ namespace NoahBot
 		/// Constructs and initializes a new <see cref="Greeter"/>.
 		/// </summary>
 		/// <param name="client">The client connection whose guild-join events will be used.</param>
-		public Greeter(DiscordClient client)
+		/// <param name="greetings">The set of greetings to use.</param>
+		public Greeter(DiscordClient client, string[] greetings)
 		{
 			Assert.Ref(client);
+			Assert.Ref(greetings);
+
+			this.greetings = greetings;
 			
 			client.GuildAvailable += Hello;
 			client.GuildMemberAdded += Welcome;

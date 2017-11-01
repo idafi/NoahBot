@@ -20,17 +20,17 @@ namespace NoahBot
 		/// <summary>
 		/// Constructs and initializes a new <see cref="Bot"/>, using the given configuration settings.
 		/// </summary>
-		/// <param name="config">The configuration settings for the discord client.</param>
-		public Bot(DiscordConfiguration config)
+		/// <param name="config">The configuration settings for the <see cref="Bot"/>.</param>
+		public Bot(BotConfig config)
 		{
 			Assert.Ref(config);
 			
-			client = new DiscordClient(config);
+			client = new DiscordClient(config.DiscordConfig);
 			commands = new CommandDispatcher();
 			
-			greeter = new Greeter(client);
+			greeter = new Greeter(client, config.Greetings);
 			redditReader = new RedditReader();
-			activitySelector = new ActivitySelector();
+			activitySelector = new ActivitySelector(config.ActivityConfig);
 			
 			commands.AddCommands(greeter, redditReader, activitySelector);
 		}
