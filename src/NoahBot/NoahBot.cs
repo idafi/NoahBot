@@ -7,7 +7,21 @@ namespace NoahBot
 {
 	internal static class NoahBot
 	{
-		static string[] proverbs;
+		static readonly string[] proverbs =
+		{
+			"Anyone who teases you loves you.",
+			"Don't make a fence more expensive or more important than what it is fencing.",
+			"If you have money, men think you are wise, handsome, and able to sing like a bird.",
+			"Locks keep out only the honest.",
+			"Never trust people who tell you all their troubles but keep from you all their joys.",
+			"People make plans, and God laughs.",
+			"Pray that you will never have to bear all that you are able to endure.",
+			"The only truly dead are those who have been forgotten.",
+			"The person who only accepts friends without faults will never have any real friends.",
+			"Truth is the safest lie.",
+			"Whoever does not try, does not learn.",
+			"Your friend has a friend; don't tell him."
+		};
 		
 		static void Main(string[] args)
 		{
@@ -18,9 +32,6 @@ namespace NoahBot
 			
 			try
 			{
-				string json = File.ReadAllText("proverbs.json");
-				proverbs = JsonConvert.DeserializeObject<string[]>(json);
-				
 				PrintLogo();
 				
 				DiscordConfiguration config = LoadConfiguration();
